@@ -1,25 +1,46 @@
+/* ==============================
+   RESET
+============================== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     margin: 0;
     padding: 0;
 }
+
+
+/* ==============================
+   CABEÇALHO
+============================== */
 
 .cabecalho {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color:#161642;
+    background-color: #161642;
 
-    display:flex;
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index:10;
+
+    z-index: 10;
 }
+
+.cabecalho img {
+    width: 12rem;
+    height: auto;
+}
+
+.cabecalho_nav {
+    margin-right: 5rem;
+}
+
 .cabecalho__lista {
     display: flex;
     list-style: none;
@@ -29,25 +50,189 @@ body {
 }
 
 .cabecalho__lista a {
+    color: #DDD627;
     text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.3125rem;
+    transition: color 0.3s ease;
 }
-.inicio__conteudo{
+
+.cabecalho__lista a:hover {
     color: #ffffff;
-    position: absolute;
-    top:50%;
-    left:10%;
-    transform: translateY(-50%);
-    width: 40%;
-    max-width: 30rem;
 }
+
+
+/* ==============================
+   CARROSSEL
+============================== */
+
 #inicio {
     position: relative;
-
 }
-#inicio img{
+
+#inicio img {
     display: block;
-    width:100%;
+    width: 100%;
     max-width: 100%;
     height: auto;
     border: none;
+    /* Escurece a imagem para destacar o texto sobre o carrossel. */
+    filter: brightness(0.55);
+}
+
+
+/* ==============================
+   TEXTO SOBRE O CARROSSEL
+============================== */
+
+.inicio__conteudo {
+    color: #ffffff;
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    width: 64.375rem;
+    max-width: 64.375rem;
+    z-index: 2;
+}
+
+.inicio__conteudo h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 5rem;
+    color: #F7F7F7;
+}
+
+
+/* ==============================
+   BOTÃO VEJA MAIS
+============================== */
+
+.inicio__conteudo a {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+
+    background-color: #DDD627;
+    color: #161642;
+
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+
+    border-radius: 2rem;
+
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.inicio__conteudo a:hover {
+    background-color: #ffffff;
+    color: #161642;
+}
+
+
+/* ==============================
+   INDICADORES DO CARROSSEL
+============================== */
+
+#inicio .owl-carousel .owl-dots {
+    position: absolute;
+    right: 14%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Botão circular */
+
+#inicio .owl-carousel .owl-dots .owl-dot {
+    appearance: none;
+    -webkit-appearance: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 1.75rem;
+    height: 1.75rem;
+    padding: 0;
+
+    border: 1px solid #DDD627;
+    border-radius: 50%;
+
+    background: transparent;
+    color: #DDD627;
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.875rem;
+
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+/* Número dentro da bolinha */
+
+#inicio .owl-carousel .owl-dots .owl-dot span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    background: transparent;
+    border: none;
+    margin: 0;
+
+    color: inherit;
+}
+
+/* Indicador ativo */
+
+#inicio .owl-carousel .owl-dots .owl-dot.active {
+    background-color: #DDD627;
+    color: #161642;
+}
+/* Garantir que os indicadores fiquem clicáveis */
+#inicio .owl-carousel .owl-dots {
+    z-index: 20;
+    pointer-events: auto;
+}
+
+#inicio .owl-carousel .owl-dot {
+    position: relative;
+    z-index: 21;
+    pointer-events: auto;
+}
+
+/* O texto dentro da bolinha não deve bloquear o clique */
+#inicio .owl-carousel .owl-dot span {
+    pointer-events: none;
+}
+#inicio .inicio__conteudo {
+    pointer-events: none;
+}
+
+#inicio .inicio__conteudo a {
+    pointer-events: auto;
+}
+
+#inicio .owl-dots {
+    position: absolute;
+    z-index: 100;
+    pointer-events: auto;
+}
+
+#inicio .owl-dots .owl-dot {
+    position: relative;
+    z-index: 101;
+    cursor: pointer;
 }
