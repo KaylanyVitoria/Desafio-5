@@ -62,12 +62,20 @@ body {
     color: #ffffff;
 }
 
+.cabecalho__menu-toggle {
+    display: none;
+}
+
 
 /* ==============================
    CARROSSEL
 ============================== */
 
 #inicio {
+    position: relative;
+}
+
+.inicio__slide {
     position: relative;
 }
 
@@ -92,16 +100,16 @@ body {
     top: 50%;
     left: 10%;
     transform: translateY(-50%);
-    width: 64.375rem;
+    width: calc(100% - 30%);
     max-width: 64.375rem;
     z-index: 2;
 }
 
 .inicio__conteudo h1 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 4.5rem;
+    font-size: clamp(1.5rem, calc(1rem + 2.6vw), 4.5rem);
     font-weight: 700;
-    line-height: 5rem;
+    line-height: 1.1;
     color: #F7F7F7;
 }
 
@@ -112,8 +120,8 @@ body {
 
 .inicio__conteudo a {
     display: inline-block;
-    margin-top: 1rem;
-    padding: 0.75rem 1.5rem;
+    margin-top: calc(0.5rem + 0.5vw);
+    padding: calc(0.5rem + 0.2vw) calc(0.75rem + 0.6vw);
 
     background-color: #DDD627;
     color: #161642;
@@ -121,7 +129,7 @@ body {
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    font-size: 1rem;
+    font-size: calc(0.8rem + 0.2vw);
 
     border-radius: 2rem;
 
@@ -139,14 +147,12 @@ body {
 ============================== */
 
 #inicio .owl-carousel .owl-dots {
-    position: absolute;
-    right: 14%;
-    top: 50%;
-    transform: translateY(-50%);
-
+    position: static;
+    transform: none;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 1rem;
+    margin-bottom: calc(0.75rem + 0.5vw);
 }
 
 /* Botão circular */
@@ -235,4 +241,103 @@ body {
     position: relative;
     z-index: 101;
     cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .inicio__conteudo {
+        left: 6%;
+        width: calc(100% - 22%);
+    }
+
+    .inicio__conteudo h1 {
+        font-size: clamp(1.25rem, calc(0.9rem + 4vw), 1.8rem);
+    }
+
+    #inicio .owl-carousel .owl-dots {
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    #inicio .owl-carousel .owl-dots .owl-dot {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .cabecalho {
+        position: relative;
+        height: 3rem;
+        padding: 0 4%;
+    }
+
+    .cabecalho img {
+        width: 5rem;
+    }
+
+    .cabecalho__menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 1.5rem;
+        height: 1.1rem;
+        padding: 0.1rem;
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+    }
+
+    .cabecalho__menu-toggle span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        border-radius: 3px;
+        background: #DDD627;
+    }
+
+    .cabecalho__menu-toggle:focus-visible {
+        outline: 2px solid #DDD627;
+        outline-offset: 4px;
+    }
+
+    .cabecalho_nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 5%;
+        width: min(20rem, calc(100vw - 2rem));
+        margin: 0;
+        padding: 1rem;
+        border-top: 1px solid rgba(221, 214, 39, 0.45);
+        background-color: #161642;
+        box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.3);
+    }
+
+    .cabecalho_nav.is-open {
+        display: block;
+    }
+
+    .cabecalho__lista {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .cabecalho__lista a {
+        display: block;
+        padding: 0.75rem 0;
+        font-size: 1rem;
+    }
+
+    #inicio .inicio__slide img {
+        height: max(28rem, calc(100vw * 0.5625));
+        object-fit: cover;
+        object-position: center;
+    }
+
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+    .inicio__conteudo h1 {
+        font-size: clamp(1.5rem, calc(1rem + 3vw), 3rem);
+    }
 }
